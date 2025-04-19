@@ -147,7 +147,7 @@ class Convert:
                     if k != '1':
                         Words += ' '+k+' و '
             Words = Words.strip()
-            if Words[-1] == 'و':
+            if Words[-1] == 'و' and Words[-2] == ' ':
                 Words = Words[:-1]
             return Words.strip()
         return str()
