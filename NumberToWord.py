@@ -46,7 +46,6 @@ class Convert:
                     )[number]
 
             case 5 | 6:
-
                 NUMBER = self.Change(number[0:lenght-3])
                 return ' '.join((NUMBER, 'هزار'))
 
