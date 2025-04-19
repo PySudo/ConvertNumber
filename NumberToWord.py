@@ -8,7 +8,6 @@ class Convert:
             token = int(lst[index])*(10**(i))
             if token:
                 result.append(token)
-        print(result)
         return result
     
     def CreateDict(self, *args) -> dict:
@@ -49,7 +48,6 @@ class Convert:
             case 5 | 6:
 
                 NUMBER = self.Change(number[0:lenght-3])
-                print(number[0:lenght-3])
                 return ' '.join((NUMBER, 'هزار'))
 
             case 7 | 8 | 9:
