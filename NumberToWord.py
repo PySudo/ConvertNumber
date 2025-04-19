@@ -1,7 +1,7 @@
 class Convert:
     def __init__(self, number : str):
         self.num = number
-        self.NAMES = ['نومدسیلیون', 'اکتودسیلیوم', 'سپتندسیلیون', 'سیکسدسیلیون', 'کویندسیلیون', 'کواتردسیلیون', 'تریدسیلیون', 'دودسیلیون', 'آندسیلیون', 'دسیلیون', 'نونیلیون', 'اکتیلیون', 'سپتیلیون', 'سیکستیلون', 'کوینتیلیون', 'کوادریلیون' ,'تریلیون' ,'میلیارد', 'میلیون']
+        self.NAMES = ['میلیون', 'میلیارد', 'تریلیون', 'کوادریلیون', 'کوینتیلیون', 'سیکستیلون', 'سپتیلیون', 'اکتیلیون', 'نونیلیون', 'دسیلیون', 'آندسیلیون', 'دودسیلیون', 'تریدسیلیون', 'کواتردسیلیون', 'کویندسیلیون', 'سیکسدسیلیون', 'سپتندسیلیون', 'اکتودسیلیوم', 'نومدسیلیون']
 
     def Extract(self, lst) -> list:
         result = list()
@@ -23,7 +23,7 @@ class Convert:
         for count, i in enumerate(range(7,64,3), 2):
             if lenght in range(i,i+3):
                 NUMBER = self.Change(number[0: lenght-(count*3)])
-                return ' '.join((NUMBER, self.NAMES[::-1][count-2]))
+                return ' '.join((NUMBER, self.NAMES[count-2]))
         return None
 
     def Change(self, number : str) -> str | None:
@@ -63,7 +63,6 @@ class Convert:
     def Num2Word(self) -> str:
         numbers = self.Extract(str(self.num))
         result = [self.Change(i) for i in numbers]
-        print(result)
         if all(result):
             lst = {k:[] for k in (*self.NAMES, 'هزار', '1')}
             Words = str()
