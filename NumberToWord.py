@@ -57,13 +57,82 @@ class Convert:
                 NUMBER = self.Change(number[0: lenght-9])
                 return ' '.join((NUMBER, 'میلیارد'))
 
+            case 13 | 14 | 15:
+                NUMBER = self.Change(number[0: lenght-12])
+                return ' '.join((NUMBER, 'تریلیون'))
+            
+            case 16 | 17 | 18:
+                NUMBER = self.Change(number[0: lenght-15])
+                return ' '.join((NUMBER, 'کوادریلیون'))
+            
+            case 19 | 20 | 21:
+                NUMBER = self.Change(number[0: lenght-18])
+                return ' '.join((NUMBER, 'کوینتیلیون'))
+
+            case 22 | 23 | 24:
+                NUMBER = self.Change(number[0: lenght-21])
+                return ' '.join((NUMBER, 'سیکستیلون'))
+            
+            case 25 | 26 | 27:
+                NUMBER = self.Change(number[0: lenght-24])
+                return ' '.join((NUMBER, 'سپتیلیون'))
+            
+            case 28 | 29 | 30:
+                NUMBER = self.Change(number[0: lenght-27])
+                return ' '.join((NUMBER, 'اکتیلیون'))
+
+            case 31 | 32 | 33:
+                NUMBER = self.Change(number[0: lenght-30])
+                return ' '.join((NUMBER, 'نونیلیون'))
+
+            case 34 | 35 | 36:
+                NUMBER = self.Change(number[0: lenght-33])
+                return ' '.join((NUMBER, 'دسیلیون'))
+
+            case 37 | 38 | 39:
+                NUMBER = self.Change(number[0: lenght-36])
+                return ' '.join((NUMBER, 'آندسیلیون'))
+
+            case 40 | 41 | 42:
+                NUMBER = self.Change(number[0: lenght-39])
+                return ' '.join((NUMBER, 'دودسیلیون'))
+
+            case 43 | 44 | 45:
+                NUMBER = self.Change(number[0: lenght-42])
+                return ' '.join((NUMBER, 'تریدسیلیون'))
+
+            case 46 | 47 | 48:
+                NUMBER = self.Change(number[0: lenght-45])
+                return ' '.join((NUMBER, 'کواتردسیلیون'))
+
+            case 49 | 50 | 51:
+                NUMBER = self.Change(number[0: lenght-48])
+                return ' '.join((NUMBER, 'کویندسیلیون'))
+
+            case 52 | 53 | 54:
+                NUMBER = self.Change(number[0: lenght-51])
+                return ' '.join((NUMBER, 'سیکسدسیلیون'))
+
+            case 55 | 56 | 57:
+                NUMBER = self.Change(number[0: lenght-54])
+                return ' '.join((NUMBER, 'سپتندسیلیون'))
+
+            case 58 | 59 | 60:
+                NUMBER = self.Change(number[0: lenght-57])
+                return ' '.join((NUMBER, 'اکتودسیلیوم'))
+
+            case 61 | 62 | 63:
+                NUMBER = self.Change(number[0: lenght-60])
+                return ' '.join((NUMBER, 'نومدسیلیون'))
+
             case _:
                 return None
+
     def Num2Word(self) -> str:
         numbers = self.Extract(str(self.num))
         result = [self.Change(i) for i in numbers]
         if all(result):
-            lst = {k:[] for k in ('میلیارد', 'میلیون', 'هزار', '1')}
+            lst = {k:[] for k in ('نومدسیلیون', 'اکتودسیلیوم', 'سپتندسیلیون', 'سیکسدسیلیون', 'کویندسیلیون', 'کواتردسیلیون', 'تریدسیلیون', 'دودسیلیون', 'آندسیلیون', 'دسیلیون', 'نونیلیون', 'اکتیلیون', 'سپتیلیون', 'سیکستیلون', 'کوینتیلیون', 'کوادریلیون' ,'تریلیون' ,'میلیارد', 'میلیون', 'هزار', '1')}
             Words = str()
 
             for i in result:
