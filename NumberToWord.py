@@ -18,7 +18,7 @@ class Convert:
             )
         )
 
-    def Change(self, number : str) -> str:
+    def Change(self, number : str) -> str | None:
         if not isinstance(number, str):
             number = str(number)
         lenght = len(number)
@@ -53,30 +53,35 @@ class Convert:
                 NUMBER = self.Change(number[0:lenght-6])
                 return ' '.join((NUMBER, 'میلیون'))
 
-            case _:
+            case 10 | 11 | 12:
                 NUMBER = self.Change(number[0: lenght-9])
                 return ' '.join((NUMBER, 'میلیارد'))
 
+            case _:
+                return None
     def Num2Word(self) -> str:
         numbers = self.Extract(str(self.num))
         result = [self.Change(i) for i in numbers]
-        lst = {k:[] for k in ('میلیارد', 'میلیون', 'هزار', '1')}
-        Words = str()
+        if all(result):
+            lst = {k:[] for k in ('میلیارد', 'میلیون', 'هزار', '1')}
+            Words = str()
 
-        for i in result:
-            splited = i.split()
-            if len(splited) == 1:
-                lst['1'].append(splited[0])
-                continue
-            lst[splited[1]].append(splited[0])
-        for k,v in lst.items():
-            if v:
-                Words += ' و '.join(v)
-                if k != '1':
-                    Words += ' '+k+' و '
-        Words = Words.strip()
-        if Words[-1] == 'و':
-            Words = Words[:-1]
-        return Words.strip()
+            for i in result:
+                splited = i.split()
+                if len(splited) == 1:
+                    lst['1'].append(splited[0])
+                    continue
+                lst[splited[1]].append(splited[0])
+            for k,v in lst.items():
+                if v:
+                    Words += ' و '.join(v)
+                    if k != '1':
+                        Words += ' '+k+' و '
+            Words = Words.strip()
+            if Words[-1] == 'و':
+                Words = Words[:-1]
+            return Words.strip()
+        return str()
+
     def __str__(self) -> str:
         return self.Num2Word()
