@@ -37,7 +37,7 @@ class Convert:
                     )[number]
             
             case 2:
-                if number[0] == '1':
+                if str(number)[0] == '1':
                     return self.CreateDict(
                         range(10, 20), 'ده', 'یازده', 'دوازده', 'سیزده', 'چهارده', 'پانزده', 'شانزده', 'هفده', 'هجده', 'نوزده'
                         )[number]
@@ -56,11 +56,19 @@ class Convert:
     def Num2Word(self) -> str:
         numbers = self.Extract(str(self.num))
         result = [self.Change(i) for i in numbers]
+        check = False
         if all(result):
             lst = {k:[] for k in (*self.NAMES, '1')}
             Words = str()
 
-            for i in result:
+            for counter, i in enumerate(result, 1):
+                if i == 'ده' and counter != len(result):
+                    check = True
+                    continue
+                if check:
+                    NAMES = ['یک', 'دو', 'سه', 'چهار', 'پنج', 'شش', 'هفت', 'هشت', 'نه']
+                    NAMES2 = ['یازده', 'دوازده', 'سیزده', 'چهارده', 'پانزده', 'شانزده', 'هفده', 'هجده', 'نوزده']
+                    i = NAMES2[NAMES.index(i)]
                 splited = i.split()
                 if len(splited) == 1:
                     lst['1'].append(splited[0])
@@ -72,7 +80,7 @@ class Convert:
                     if k != '1':
                         Words += ' '+k+' و '
             Words = Words.strip()
-            if Words.endswith(' و'):
+            if Words[-1] == 'و' and Words[-2] == ' ':
                 Words = Words[:-1]
             return Words.strip()
         return str()
