@@ -69,6 +69,7 @@ class Convert:
                     NAMES = ['یک', 'دو', 'سه', 'چهار', 'پنج', 'شش', 'هفت', 'هشت', 'نه']
                     NAMES2 = ['یازده', 'دوازده', 'سیزده', 'چهارده', 'پانزده', 'شانزده', 'هفده', 'هجده', 'نوزده']
                     i = NAMES2[NAMES.index(i)]
+                    check = False
                 splited = i.split()
                 if len(splited) == 1:
                     lst['1'].append(splited[0])
