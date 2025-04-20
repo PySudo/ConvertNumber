@@ -37,7 +37,7 @@ class Convert:
                     )[number]
             
             case 2:
-                if str(number)[0] == '1':
+                if number[0] == '1':
                     return self.CreateDict(
                         range(10, 20), 'ده', 'یازده', 'دوازده', 'سیزده', 'چهارده', 'پانزده', 'شانزده', 'هفده', 'هجده', 'نوزده'
                         )[number]
