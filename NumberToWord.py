@@ -72,7 +72,7 @@ class Convert:
                     if k != '1':
                         Words += ' '+k+' و '
             Words = Words.strip()
-            if Words[-1] == 'و' and Words[-2] == ' ':
+            if Words.endswith(' و'):
                 Words = Words[:-1]
             return Words.strip()
         return str()
