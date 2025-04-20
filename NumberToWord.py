@@ -1,7 +1,7 @@
 class Convert:
     def __init__(self, number : str):
         self.num = number
-        self.NAMES = ['میلیون', 'میلیارد', 'تریلیون', 'کوادریلیون', 'کوینتیلیون', 'سیکستیلون', 'سپتیلیون', 'اکتیلیون', 'نونیلیون', 'دسیلیون', 'آندسیلیون', 'دودسیلیون', 'تریدسیلیون', 'کواتردسیلیون', 'کویندسیلیون', 'سیکسدسیلیون', 'سپتندسیلیون', 'اکتودسیلیوم', 'نومدسیلیون']
+        self.NAMES = ['هزار', 'میلیون', 'میلیارد', 'تریلیون', 'کوادریلیون', 'کوینتیلیون', 'سیکستیلون', 'سپتیلیون', 'اکتیلیون', 'نونیلیون', 'دسیلیون', 'آندسیلیون', 'دودسیلیون', 'تریدسیلیون', 'کواتردسیلیون', 'کویندسیلیون', 'سیکسدسیلیون', 'سپتندسیلیون', 'اکتودسیلیوم', 'نومدسیلیون']
 
     def Extract(self, lst) -> list:
         result = list()
@@ -20,10 +20,10 @@ class Convert:
         )
 
     def BigNumbers(self, lenght, number) -> str | None:
-        for count, i in enumerate(range(7,64,3), 2):
+        for count, i in enumerate(range(4,64,3),1):
             if lenght in range(i,i+3):
                 NUMBER = self.Change(number[0: lenght-(count*3)])
-                return ' '.join((NUMBER, self.NAMES[count-2]))
+                return ' '.join((NUMBER, self.NAMES[count-1]))
         return None
 
     def Change(self, number : str) -> str | None:
@@ -46,16 +46,9 @@ class Convert:
                     range(20, 100, 10),  'بیست', 'سی', 'چهل', 'پنجاه', 'شصت', 'هفتاد', 'هشتاد', 'نود'
                     )[number]
             case 3:
-                return self.CreateDict(range(100, 1000, 100),  'صد', 'دویست', 'سیصد', 'چهارصد', 'پانصد', 'ششصد', 'هفتصد', 'هشتصد', 'نهصد')[number]
-            
-            case 4:
                 return self.CreateDict(
-                    range(1000, 10000, 1000), 'یک هزار', 'دو هزار', 'سه هزار', 'چهار هزار', 'پنج هزار', 'شش هزار', 'هفت هزار', 'هشت هزار', 'نه هزار'
+                    range(100, 1000, 100),  'صد', 'دویست', 'سیصد', 'چهارصد', 'پانصد', 'ششصد', 'هفتصد', 'هشتصد', 'نهصد'
                     )[number]
-
-            case 5 | 6:
-                NUMBER = self.Change(number[0:lenght-3])
-                return ' '.join((NUMBER, 'هزار'))
 
             case _:
                 return self.BigNumbers(lenght, number)
@@ -64,7 +57,7 @@ class Convert:
         numbers = self.Extract(str(self.num))
         result = [self.Change(i) for i in numbers]
         if all(result):
-            lst = {k:[] for k in (*self.NAMES, 'هزار', '1')}
+            lst = {k:[] for k in (*self.NAMES, '1')}
             Words = str()
 
             for i in result:
