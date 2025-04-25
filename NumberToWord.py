@@ -41,7 +41,7 @@ class Convert:
                     return self.CreateDict(
                         range(10, 20), 'ده', 'یازده', 'دوازده', 'سیزده', 'چهارده', 'پانزده', 'شانزده', 'هفده', 'هجده', 'نوزده'
                         )[number]
-                
+
                 return self.CreateDict(
                     range(20, 100, 10),  'بیست', 'سی', 'چهل', 'پنجاه', 'شصت', 'هفتاد', 'هشتاد', 'نود'
                     )[number]
@@ -58,7 +58,7 @@ class Convert:
         result = [self.Change(i) for i in numbers]
         check = False
         if all(result):
-            lst = {k:[] for k in (*self.NAMES, '1')}
+            lst = {k:[] for k in (*self.NAMES[::-1], '1')}
             Words = str()
 
             for counter, i in enumerate(result, 1):
@@ -75,6 +75,7 @@ class Convert:
                     lst['1'].append(splited[0])
                     continue
                 lst[splited[1]].append(splited[0])
+
             for k,v in lst.items():
                 if v:
                     Words += ' و '.join(v)
